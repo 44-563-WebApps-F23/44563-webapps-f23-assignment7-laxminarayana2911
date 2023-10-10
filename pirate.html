@@ -69,7 +69,7 @@
 <p>Click on the locations to search for treasure, beware the traps</p>
 <div id="locations">Number of locations checked is zero.</div>
 <p id="penalty">Penalty is zero.</p>
-<p>Click for help.</p>
+<p id="forHelp" onclick="help()">Click for help.</p>
 <div id="help">Help report</div>
 <div class="GameField">
     <div class="row">
@@ -118,10 +118,12 @@ const ids = ["img1", "img2", "img3", "img4", "img5", "img6", "img7",
     let treasureLocation=5
     let trapLocation=18
     let gameOver=false
+
     function check(position) {
         image = document.getElementById(ids[position])
         console.log(ids[position])
         if(position==treasureLocation){
+            console.log("penalty : "+penalty)
             console.log("treasure")
             image.src="transparent-treasure.jpg"
             gameOver=true
@@ -135,25 +137,34 @@ const ids = ["img1", "img2", "img3", "img4", "img5", "img6", "img7",
         }
         checkCount+=1
         penalty+=1
-        document.getElementById("locations").innerHTML = "updated loaction text"
-        document.getElementById("penalty").innerHTML = "Updtaed the penalty text"
+        document.getElementById("locations").innerHTML = "Number of locations checked is : "+checkCount
+        document.getElementById("penalty").innerHTML = "Updtaed the penalty: "+penalty
+        console.log("checkedcount: "+checkCount)
+        console.log("penalty : "+penalty)
         lastCheck=penalty
     }
 
-    function help(params) {
-        row=parseInt(position/5)
-        column=parseInt(position%5)
-        lastCh_column = parseInt(lastCheck)
-        treasure_row = parseInt(treasureLocation)
-        if((lastCh_column-treasure_row)==1 || (treasure_row-lastCh_column)==1){
-            return "Can smell it"
+    function help() {
+        lastch_row=parseInt(lastCheck/5)
+        lastCh_column=parseInt(lastCheck%5)
+        console.log(lastch_row+"  "+lastCh_column)
+        treasure_row = parseInt(treasureLocation/5)
+        treasure_column = parseInt(treasureLocation%5)
+        console.log(treasure_row+"  "+treasure_column)
+        if(((lastCh_column-treasure_column))==1){
+            document.getElementById("help").innerHTML ="Can smell it"
         }
-        else if((lastCh_column-treasure_row)==2 || (treasure_row-lastCh_column)==2){
-            return "Close Matie"
+        else if(((lastch_row-treasure_row)+(lastCh_column-treasure_column)+2)==2){
+            document.getElementById("help").innerHTML = "Close Matie"
         }
         else{
-            return "Step Faster"
+            document.getElementById("help").innerHTML = "Step Faster"
         }
+        penalty+=2
+        document.getElementById("penalty").innerHTML = "Updtaed the penalty: "+penalty
+        console.log("lastCheck : "+lastCheck)
+        console.log("treasureLocation: "+treasureLocation)
+        console.log("penalty : "+penalty)
     }
 
 </script>
