@@ -36,11 +36,8 @@
     <button onclick="addEnd()">Add end</button>
     <button onclick="addFront()">Add front</button>
     <button onclick="remove()">Remove</button>
-	
-	
 </body>
 <script>
-
 	function remove() {
         let mergerItems = document.getElementsByClassName("merger");
         let length = mergerItems.length;
@@ -49,7 +46,6 @@
             mergerItems[middleIndex].remove();
         }
         }
-
         function addFront() {
         let element = document.createElement("div");
         let inputText = document.getElementById('inputText').value;
