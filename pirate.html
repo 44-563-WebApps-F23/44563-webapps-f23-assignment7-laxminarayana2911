@@ -120,8 +120,13 @@ const ids = ["img1", "img2", "img3", "img4", "img5", "img6", "img7",
     let gameOver=false
 
     function check(position) {
-        image = document.getElementById(ids[position])
-        console.log(ids[position])
+        if(gameOver){
+
+        }
+        else{
+            image = document.getElementById(ids[position])
+            console.log(ids[position])
+
         if(position==treasureLocation){
             console.log("penalty : "+penalty)
             console.log("treasure")
@@ -129,11 +134,15 @@ const ids = ["img1", "img2", "img3", "img4", "img5", "img6", "img7",
             gameOver=true
             penalty=penalty-3
         }
-        if(position==trapLocation){
+        else if(position==trapLocation){
             console.log("trap")
             image.src = "white-traps.jpg"
             gameOver=true
             penalty=penalty+4
+        }
+        else{
+            console.log("any image")
+            image.src = "things.jpg" 
         }
         checkCount+=1
         penalty+=1
@@ -142,6 +151,7 @@ const ids = ["img1", "img2", "img3", "img4", "img5", "img6", "img7",
         console.log("checkedcount: "+checkCount)
         console.log("penalty : "+penalty)
         lastCheck=penalty
+        } 
     }
 
     function help() {

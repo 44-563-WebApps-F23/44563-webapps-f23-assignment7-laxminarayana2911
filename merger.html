@@ -2,11 +2,11 @@
 <html> <head> <style>
     .flex-container {
       display: flex;  flex-direction:row;
-      background-color: red;
+      background-color: rgb(95, 95, 161);
   }
 
 .flex-container > div {  /*div children of the flex container*/
-  background-color: #f1f1f1; 
+  background-color: #de1c1c; 
   margin: 10px;  padding: 20px;  font-size: 30px;
 }
 
@@ -24,7 +24,6 @@
 <body>
     <header><h1>Laxminarayana Yadav Pakanati Builds a merger</h1></header>
     
-    <input type="text">
 		<div class="flex-container" id="target">
 		  <div class="merger">row item 1</div>   
 		  <div class="merger">row item 2</div>  
@@ -37,23 +36,39 @@
     <button onclick="addEnd()">Add end</button>
     <button onclick="addFront()">Add front</button>
     <button onclick="remove()">Remove</button>
-
-	<p> Press the button to create an new element of type div and then add it to the container.</p>
-    
 	
 	
 </body>
 <script>
-	function makeNewDiv(){
-		/* make the div and its text */
-		let element = document.createElement("div")
-		element.innerHTML = "an item after 3"
-		element.style.color = "orange"
 
-		/* add it to the container */
-		let container = document.getElementById('target')
-		container.appendChild(element)
-		
-	}
+	function remove() {
+        let mergerItems = document.getElementsByClassName("merger");
+        let length = mergerItems.length;
+        if (length > 0) {
+            let middleIndex = Math.floor(length / 2);
+            mergerItems[middleIndex].remove();
+        }
+        }
+
+        function addFront() {
+        let element = document.createElement("div");
+        let inputText = document.getElementById('inputText').value;
+        element.innerHTML = inputText;
+        element.className = "merger";
+
+        let container = document.getElementById('target');
+        container.insertBefore(element, container.firstChild);
+        }
+
+        function addEnd() {
+        let element = document.createElement("div");
+        let inputText = document.getElementById('inputText').value;
+        element.innerHTML = inputText;
+        element.className = "merger";
+
+        let container = document.getElementById('target');
+        container.appendChild(element);
+        }
+
 </script>
 </html>	
