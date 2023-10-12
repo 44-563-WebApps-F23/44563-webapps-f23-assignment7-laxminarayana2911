@@ -1,70 +1,79 @@
 <!DOCTYPE html>
-<html> <head> 
+<html>
+
+<head>
     <title>Merger files</title>
     <style>
-    .flex-container {
-      display: flex;  flex-direction:row;
-      background-color: rgb(95, 95, 161);
-  }
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: rgb(95, 95, 161);
+        }
 
-.flex-container > div {  /*div children of the flex container*/
-  background-color: #de1c1c; 
-  margin: 10px;  padding: 20px;  font-size: 30px;
-}
+        .flex-container>div {
+            /*div children of the flex container*/
+            background-color: #de1c1c;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
 
-/* Responsive layout */
-@media (max-width: 600px) { 
-	 .flex-container{
-		 flex-direction:column;
-		 background-color: green;
-	  }
-	}
-</style></head>
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
 
 
 
 <body>
-    <header><h1>Laxminarayana Yadav Pakanati Builds a merger</h1></header>
-    
-		<div class="flex-container" id="target">
-		  <div class="merger">row item 1</div>   
-		  <div class="merger">row item 2</div>  
-		  <div class="merger">row item 3</div>  
-		</div>
-   
+    <header>
+        <h1>Laxminarayana Yadav Pakanati Builds a merger</h1>
+    </header>
+
+    <div class="flex-container" id="target">
+        <div class="merger">row item 1</div>
+        <div class="merger">row item 2</div>
+        <div class="merger">row item 3</div>
+    </div>
+
     <label for="inputElement">Type something: <br></label>
     <input type="text" id="inputText" placeholder="Enter text" name="input" value="">
 
     <button onclick="addEnd()">Add end</button>
     <button onclick="addFront()">Add front</button>
     <button onclick="remove()">Remove</button>
-    
+
 </body>
 <script>
     function swap() {
         let mergerItems = document.getElementsByClassName("merger");
-        let length = mergerItems.length-1;
-        first=Math.floor((Math.random() * length) + 0)
-        second=Math.floor((Math.random() * length) + 0)
-        if(first==second){
-            second=Math.floor((Math.random() * length) + 0)
+        let length = mergerItems.length - 1;
+        first = Math.floor((Math.random() * length) + 0)
+        second = Math.floor((Math.random() * length) + 0)
+        if (first == second) {
+            second = Math.floor((Math.random() * length) + 0)
         }
-        console.log("first",first);
-        console.log("second",second);
+        console.log("first", first);
+        console.log("second", second);
         const div1 = mergerItems[first].innerHTML
         const div2 = mergerItems[second].innerHTML
-        mergerItems[first].innerHTML=div2;
-        mergerItems[second].innerHTML=div1;
+        mergerItems[first].innerHTML = div2;
+        mergerItems[second].innerHTML = div1;
     }
-	function remove() {
+    function remove() {
         let mergerItems = document.getElementsByClassName("merger");
         let length = mergerItems.length;
         if (length > 0) {
             let middleIndex = Math.floor(length / 2);
             mergerItems[middleIndex].remove();
         }
-        }
-        function addFront() {
+    }
+    function addFront() {
         let element = document.createElement("div");
         let inputText = document.getElementById('inputText').value;
         element.innerHTML = inputText;
@@ -72,9 +81,9 @@
 
         let container = document.getElementById('target');
         container.insertBefore(element, container.firstChild);
-        }
+    }
 
-        function addEnd() {
+    function addEnd() {
         let element = document.createElement("div");
         let inputText = document.getElementById('inputText').value;
         element.innerHTML = inputText;
@@ -82,7 +91,8 @@
 
         let container = document.getElementById('target');
         container.appendChild(element);
-        }
+    }
 
 </script>
-</html>	
+
+</html>
