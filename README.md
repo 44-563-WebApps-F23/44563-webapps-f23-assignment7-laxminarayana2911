@@ -3,5 +3,7 @@
 An assignment on java script modifying the DOM and using anonymous callback functions.
 Hosted Links:
 https://44-563-webapps-f23.github.io/44563-webapps-f23-assignment7-laxminarayana2911/pirate.html
+<br>
 https://44-563-webapps-f23.github.io/44563-webapps-f23-assignment7-laxminarayana2911/react.html
+<br>
 https://44-563-webapps-f23.github.io/44563-webapps-f23-assignment7-laxminarayana2911/merger.html
